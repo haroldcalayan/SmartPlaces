@@ -1,14 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-    <!-- Map Fragment embedded with the map object -->
-    <fragment
-        class="com.here.android.mpa.mapping.MapFragment"
-        android:id="@+id/mapfragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    android:layout_height="match_parent" >
 
-</LinearLayout>
+    <!-- Composite Fragment exposes both Map and LiveSight functionality -->
+    <fragment
+        android:id="@+id/compositefragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.here.android.mpa.ar.CompositeFragment" />
+
+    <Button
+        android:id="@+id/startLiveSight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="startLiveSight"
+        android:text="Start LiveSight" />
+
+    <Button
+        android:id="@+id/stopLiveSight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="stopLiveSight"
+        android:text="Stop Livesight"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/toggleObject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="toggleObject"
+        android:text="Add Object"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="100" >
+    android:weightSum="100">
     
     <ImageView 
         android:id="@+id/adapter_notifications_list_item_image_view_notification_image"
@@ -26,9 +26,7 @@
 	        android:text="Buy Milk"
 	        android:textSize="22sp"
 	        android:textColor="#333333"
-	        style="bold"
-	        android:layout_marginBottom="5dp"
-	        android:layout_marginTop="10dp"/>
+	        style="bold"/>
 	    
 	    <TextView 
 	        android:id="@+id/adapter_notifications_list_item_text_view_message"
@@ -36,8 +34,7 @@
 	        android:layout_height="wrap_content"
 	        android:text="Nearby Grocery"
 	        android:textSize="16sp"
-	        android:textColor="#666666"
-	        android:layout_marginBottom="10dp"/>
+	        android:textColor="#666666"/>
     </LinearLayout>
 
 </LinearLayout>
