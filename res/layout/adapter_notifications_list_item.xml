@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100" >
+    
+    <ImageView 
+        android:id="@+id/adapter_notifications_list_item_image_view_notification_image"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:scaleType="center"
+        android:src="@drawable/icon_reminders"/>
+    
+    <LinearLayout 
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="90"
+        android:gravity="center_vertical">
+	    <TextView 
+	        android:id="@+id/adapter_notifications_list_item_text_view_title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Buy Milk"
+	        android:textSize="22sp"
+	        android:textColor="#333333"
+	        style="bold"
+	        android:layout_marginBottom="5dp"
+	        android:layout_marginTop="10dp"/>
+	    
+	    <TextView 
+	        android:id="@+id/adapter_notifications_list_item_text_view_message"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Nearby Grocery"
+	        android:textSize="16sp"
+	        android:textColor="#666666"
+	        android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>
