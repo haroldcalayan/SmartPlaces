@@ -25,11 +25,11 @@ Sam Francisco is a developer. [Facebook](https://www.facebook.com/perfectweiss)
 
 Aaron
 =======
-Aaron is a designer. [Website](https://www.facebook.com/nelonoel)
+Aaron is a designer. [Facebook](https://www.facebook.com/nelonoel)
 
 Leslie
 =======
-Leslie is a web developer. [Website](https://www.facebook.com/resurichan)
+Leslie is a web developer. [Facebook](https://www.facebook.com/resurichan)
 
 Harold
 =======
