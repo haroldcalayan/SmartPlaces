@@ -1,16 +1,213 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_linear_layout_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.pipalapipapalapi.smartplaces.MainActivity" >
+    android:layout_height="match_parent">
+
+  <ImageView
+      android:id="@+id/activity_main_image_view_background"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
+      android:alpha="0.75"
+      android:scaleType="centerCrop"
+      android:src="@drawable/activity_main_background" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:weightSum="100"
+      android:padding="16dp">
+
+  <RelativeLayout
+      android:id="@+id/activity_main_relative_layout_top"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="6">
+
+    <ImageView
+        android:id="@+id/activity_main_relative_layout_top_image_view_settings"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:alpha="0.75"
+        android:src="@drawable/icon_settings" />
 
     <TextView
+        android:id="@+id/activity_main_relative_layout_top_text_view_notification_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_toLeftOf="@+id/activity_main_relative_layout_top_image_view_notifications"
+        android:alpha="0.75"
+        android:text="16"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/activity_main_relative_layout_top_image_view_notifications"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:alpha="0.75"
+        android:src="@drawable/icon_notifications" />
+
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:id="@+id/activity_main_linear_layout_content"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:gravity="center"
+      android:layout_below="@id/activity_main_relative_layout_top"
+      android:layout_weight="54">
+    
+    <ImageView
+        android:id="@+id/activity_main_linear_layout_content_image_view_cloud"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/activity_main_linear_layout_content_text_view_temperature"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/activity_main_linear_layout_content_text_view_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/activity_main_linear_layout_content_image_view_cloud"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:alpha="0.75"
+        android:paddingLeft="5dp"
+        android:text="32 \u2103"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/activity_main_linear_layout_content_text_view_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_main_linear_layout_content_image_view_cloud"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:alpha="0.75"
+        android:text="Makati City"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/activity_main_linear_layout_content_text_view_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_main_linear_layout_content_text_view_location"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:alpha="0.75"
+        android:text="DEC. 6, SAT"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+  </RelativeLayout>
+
+  <LinearLayout
+      android:id="@+id/activity_main_linear_layout_bottom"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_below="@+id/activity_main_linear_layout_content"
+      android:layout_weight="40"
+      android:orientation="horizontal"
+      android:weightSum="3" >
+
+    <LinearLayout
+        android:id="@+id/activity_main_linear_layout_bottom_linear_layout_reminders"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+      <ImageView
+          android:id="@+id/activity_main_linear_layout_bottom_linear_layout_reminders_image_view_reminders"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:alpha="0.75"
+          android:src="@drawable/button_reminders" />
+
+      <TextView
+          android:id="@+id/activity_main_linear_layout_bottom_linear_layout_reminders_text_view_reminders"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:alpha="0.75"
+          android:text="Reminders"
+          android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_main_linear_layout_bottom_linear_layout_messages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+      <ImageView
+          android:id="@+id/activity_main_linear_layout_bottom_linear_layout_messages_image_view_messages"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:alpha="0.75"
+          android:src="@drawable/button_messages" />
+
+      <TextView
+          android:id="@+id/activity_main_linear_layout_bottom_linear_layout_messages_text_view_messages"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:alpha="0.75"
+          android:text="Messages"
+          android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_main_linear_layout_bottom_linear_layout_toggles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+      <ImageView
+          android:id="@+id/activity_main_linear_layout_bottom_linear_layout_toggles_image_view_toggles"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:alpha="0.75"
+          android:src="@drawable/button_toggles" />
+
+      <TextView
+          android:id="@+id/activity_main_linear_layout_bottom_linear_layout_toggles_text_view_toggles"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:alpha="0.75"
+          android:text="Toggles"
+          android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+  </LinearLayout>
 
 </RelativeLayout>
