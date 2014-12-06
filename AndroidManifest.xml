@@ -65,6 +65,9 @@
         <activity
             android:name=".activity.NotificationsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HereMapActivity"
+            android:screenOrientation="portrait" />
 
         <!--
     Embed the HERE Map Service. 
