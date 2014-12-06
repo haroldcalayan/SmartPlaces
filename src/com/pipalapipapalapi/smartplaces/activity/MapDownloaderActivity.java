@@ -9,20 +9,24 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-import com.pipalapipapalapi.smartplaces.R;
 import com.here.android.mpa.common.MapEngine;
 import com.here.android.mpa.common.OnEngineInitListener;
 import com.here.android.mpa.odml.MapLoader;
 import com.here.android.mpa.odml.MapPackage;
+import com.pipalapipapalapi.smartplaces.R;
 import com.pipalapipapalapi.smartplaces.adapters.MapPackageAdapter;
 
-public class MapDownloaderActivity extends ActionBarActivity {
+public class MapDownloaderActivity extends ActionBarActivity implements OnClickListener {
 	
 	@InjectView(R.id.continent_map_packages_spinner) Spinner mContinentsSpinner;
 	@InjectView(R.id.countries_map_packages_spinner) Spinner mCountriesSpinner;
@@ -39,6 +43,9 @@ public class MapDownloaderActivity extends ActionBarActivity {
 	private ProgressDialog mProgressDialog;
 	private MapPackageAdapter mContinentAdapter;
 	private MapPackageAdapter mCountriesAdapter;
+	
+	private int selectedContinentId;
+	private int selectedCountryId;
 
 	/*
 	 * static { System.loadLibrary("CertResourcesPkg");
@@ -95,6 +102,7 @@ public class MapDownloaderActivity extends ActionBarActivity {
 	
 	private void initViews() {
 		mProgressDialog = new ProgressDialog(activityContext);
+		mDownloadButton.setOnClickListener(this);
 	}
 	
 	private void getMapPackages() {
@@ -167,6 +175,7 @@ public class MapDownloaderActivity extends ActionBarActivity {
 		mContinentAdapter = new MapPackageAdapter(activityContext, continentMapPackageList);
 		mContinentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
+		boolean isFirst = true;
 		for (MapPackage continentMapPackage : continentMapPackageList) {
 	    int mapPackageId = continentMapPackage.getId();
 	    mMapPackageLookup.put(mapPackageId, continentMapPackage);
@@ -174,13 +183,96 @@ public class MapDownloaderActivity extends ActionBarActivity {
 	    List<MapPackage> childMapPackagesList = continentMapPackage.getChildren();
 	    mCountriesMapPackagesMapping.put(mapPackageId, childMapPackagesList);
 	    
+	    if (isFirst) {
+	    	refreshCountries(childMapPackagesList);
+	    	isFirst = false;
+	    }
+	    
 	    for (MapPackage childMapPackage : childMapPackagesList) {
 	    	mMapPackageLookup.put(childMapPackage.getId(), childMapPackage);
       }
     }
 		
+		initAdapters();
 		dismissProgressDialog();
-		mContinentsSpinner.setAdapter(mContinentAdapter);
 	}
+
+	private void initAdapters() {
+		mContinentsSpinner.setAdapter(mContinentAdapter);
+		mCountriesSpinner.setAdapter(mCountriesAdapter);
+		
+		mContinentsSpinner.setOnItemSelectedListener(new ContinentsAdapterItemSelectedListener());
+		mCountriesSpinner.setOnItemSelectedListener(new CountriesAdapterItemSelectedListener());
+	}
+	
+	private void refreshCountries(List<MapPackage> countriesList) {
+		mCountriesAdapter = new MapPackageAdapter(activityContext, countriesList);
+  	mCountriesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+  	mCountriesSpinner.setAdapter(mCountriesAdapter);
+  	mCountriesAdapter.notifyDataSetChanged();
+  	
+  	MapPackage selectedCountryMapPackage = countriesList.get(0);
+  	if ( null != selectedCountryMapPackage ) {
+  		selectedCountryId = selectedCountryMapPackage.getId();
+  		Log.d(TAG, "selectedCountryTitle : " + selectedCountryMapPackage.getTitle());
+  		Log.d(TAG, "selectedCountryId : " + selectedCountryId);
+  	}
+	}
+	
+	private class ContinentsAdapterItemSelectedListener implements OnItemSelectedListener {
+
+		@Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position,
+        long id) {
+	    MapPackage mapPackage = (MapPackage) parent.getItemAtPosition(position);
+	    if ( null == mapPackage ) {
+	    	return;
+	    }
+	    
+	    Log.i(TAG, "selected continent : " + mapPackage.getTitle());
+	    
+	    selectedContinentId = mapPackage.getId();
+	    List<MapPackage> countriesUnderContinentList = mCountriesMapPackagesMapping.get(selectedContinentId);
+	    refreshCountries(countriesUnderContinentList);
+    }
+
+		@Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+	    
+    }
+		
+	}
+	
+	private class CountriesAdapterItemSelectedListener implements OnItemSelectedListener {
+
+		@Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position,
+        long id) {
+	    MapPackage mapPackage = (MapPackage) parent.getItemAtPosition(position);
+	    if ( null == mapPackage ) {
+	    	return;
+	    }
+	    
+	    selectedCountryId = mapPackage.getId();
+	    Log.i(TAG, "selected country : " + mapPackage.getTitle());
+	    Log.i(TAG, "selectedCountryId : " + selectedCountryId);
+    }
+
+		@Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+	    
+    }
+		
+	}
+
+	@Override
+  public void onClick(View view) {
+	  switch (view.getId()) {
+	  	case R.id.download_button : {
+	  		
+	  	}
+	  	break;
+	  }
+  }
 
 }
