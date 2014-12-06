@@ -4,22 +4,24 @@
     android:layout_height="match_parent"
     android:background="#333333" >
     
-    <ImageView 
+    <ImageView
         android:id="@+id/activity_splash_screen_image_view_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/icon_main"
         android:layout_centerInParent="true"
-        android:paddingBottom="10dp" />
-    <TextView 
+        android:src="@drawable/icon_main" />
+
+    <TextView
         android:id="@+id/activity_splash_screen_text_view_smart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SMART"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
+        android:layout_below="@id/activity_splash_screen_image_view_logo"
         android:layout_centerInParent="true"
-        android:layout_below="@id/activity_splash_screen_image_view_logo" />
+        android:layout_marginTop="10dp"
+        android:text="SMART"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
     <TextView 
         android:id="@+id/activity_splash_screen_text_view_places"
         android:layout_width="wrap_content"
