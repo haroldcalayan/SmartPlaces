@@ -3,6 +3,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    
+    <Button 
+        android:id="@+id/activity_settings_button_download_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Download Map"/>
+    <Button 
+        android:id="@+id/activity_settings_button_sync_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sync Calendar"/>
+    <Button 
+        android:id="@+id/activity_settings_button_enable_promo_alerts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable Promo Alerts"/>
+    <Button 
+        android:id="@+id/activity_settings_button_fetch_facebook_likes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fetch Facebook Likes"/>
 
 </LinearLayout>
