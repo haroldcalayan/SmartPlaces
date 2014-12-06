@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pipalapipapalapi.smartplaces.R;
+import com.pipalapipapalapi.smartplaces.activity.MessageViewActivity;
 import com.pipalapipapalapi.smartplaces.model.Message;
 import com.pipalapipapalapi.smartplaces.model.Toggle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -63,8 +66,22 @@ public class MessagesAdapter extends BaseAdapter {
 	    Message message = mMessagesList.get(position);
 	    viewHolder.textViewMessage.setText(message.getMessage());
 	    viewHolder.textViewRecipient.setText(message.getRecipientNumber());
+	    
+	    convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				openMessageViewActivity();
+			}
+		});
 
 	    return convertView;
+	}
+	
+	private void openMessageViewActivity() {
+		Intent intent = new Intent(mContext, MessageViewActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		mContext.startActivity(intent);
 	}
 	
 	private static class ViewHolder {

@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pipalapipapalapi.smartplaces.R;
+import com.pipalapipapalapi.smartplaces.activity.ReminderViewActivity;
 import com.pipalapipapalapi.smartplaces.model.Reminder;
 import com.pipalapipapalapi.smartplaces.model.Toggle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -64,7 +67,21 @@ public class RemindersAdapter extends BaseAdapter {
 	    viewHolder.textViewMessage.setText(reminder.getMessage());
 	    viewHolder.textViewLocationAndTime.setText("lat:" + reminder.getLatitude() + " lng:" + reminder.getLongitude());
 
+	    convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				openReminderViewActivity();
+			}
+		});
 	    return convertView;
+	}
+	
+	private void openReminderViewActivity() {
+		Intent intent = new Intent(mContext, ReminderViewActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		mContext.startActivity(intent);
 	}
 	
 	private static class ViewHolder {
