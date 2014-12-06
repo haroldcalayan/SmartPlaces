@@ -8,8 +8,10 @@ import java.util.Map;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -116,6 +118,7 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 	}
 	
 	private void initViews() {
+		initActionBar();
 		mProgressDialog = new ProgressDialog(activityContext);
 		mDownloadButton.setOnClickListener(this);
 	}
@@ -314,5 +317,26 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 	  	break;
 	  }
   }
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	private void initActionBar() {
+	    ActionBar actionBar = getSupportActionBar();
+	    actionBar.setDisplayUseLogoEnabled(true);
+	    actionBar.setDisplayHomeAsUpEnabled(true);
+	    actionBar.setDisplayShowHomeEnabled(true);
+	    actionBar.setIcon(R.drawable.icon_settings);
+	    actionBar.setTitle("Map Download");
+	}
 
 }
