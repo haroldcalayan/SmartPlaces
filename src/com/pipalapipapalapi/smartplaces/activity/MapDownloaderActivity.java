@@ -1,5 +1,6 @@
 package com.pipalapipapalapi.smartplaces.activity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,7 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 
 	private Context activityContext;
 	private MapEngine mMapEngine;
+	private MapLoader.Listener mMapLoaderListener;
 	
 	private Map<Integer, MapPackage> mMapPackageLookup;
 	private Map<Integer, List<MapPackage>> mCountriesMapPackagesMapping;
@@ -46,6 +48,7 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 	
 	private int selectedContinentId;
 	private int selectedCountryId;
+	private String selectedCountryTitle;
 
 	/*
 	 * static { System.loadLibrary("CertResourcesPkg");
@@ -65,8 +68,9 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 		ButterKnife.inject(this);
 		
 		activityContext = this;
+		selectedCountryTitle = "";
 		initViews();
-		showIndeterminateProgress("Getting Map Packages", "This will only take a short while", false);
+		showSpinnerProgress("Getting Map Packages", "This will only take a short while", false);
 		
 		mMapEngine = MapEngine.getInstance(this);
 		mMapEngine.init(new OnEngineInitListener() {
@@ -85,12 +89,23 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 		});
 	}
 	
-	private void showIndeterminateProgress(final String title, final String message, 
+	private void showSpinnerProgress(final String title, final String message, 
 			final boolean isCancellable) {
 		mProgressDialog.setIndeterminate(true);
 		mProgressDialog.setCancelable(isCancellable);
 		mProgressDialog.setTitle(title);
 		mProgressDialog.setMessage(message);
+		mProgressDialog.show();
+	}
+	
+	private void showHorizontalProgress(final String title, final String message, final boolean isCancellable) {
+//		mProgressDialog = new ProgressDialog(activityContext);
+		mProgressDialog.setCancelable(isCancellable);
+		mProgressDialog.setTitle(title);
+		mProgressDialog.setMessage(message);
+		mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		mProgressDialog.setProgress(0);
+		mProgressDialog.setMax(100);
 		mProgressDialog.show();
 	}
 	
@@ -106,7 +121,7 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 	}
 	
 	private void getMapPackages() {
-		MapLoader.Listener mapLoaderListener = new MapLoader.Listener() {
+		mMapLoaderListener = new MapLoader.Listener() {
 
 			public void onUninstallMapPackagesComplete(MapPackage rootMapPackage,
 			    MapLoader.ResultCode mapLoaderResultCode) {
@@ -117,6 +132,9 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 
 			public void onProgress(int progressPercentage) {
 				Log.i(TAG, "progressPercentage : " + progressPercentage);
+				if ( null == mProgressDialog && mProgressDialog.isShowing() ) {
+					mProgressDialog.setProgress(progressPercentage);
+				}
 			}
 
 			public void onPerformMapDataUpdateComplete(MapPackage rootMapPackage,
@@ -137,6 +155,16 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 				Log.d(TAG, "onInstallMapPackagesComplete");
 				Log.i(TAG, "rootMapPackage : " + rootMapPackage.toString());
 				Log.i(TAG, "mapLoaderResultCode : " + mapLoaderResultCode);
+				
+				dismissProgressDialog();
+				if ( MapLoader.ResultCode.OPERATION_SUCCESSFUL == mapLoaderResultCode ) {
+					Toast.makeText(activityContext, selectedCountryTitle + " map downloaded.", Toast.LENGTH_SHORT)
+						.show();
+				}
+				else {
+					Toast.makeText(activityContext, mapLoaderResultCode.toString(), Toast.LENGTH_SHORT)
+						.show();
+				}
 			}
 
 			public void onGetMapPackagesComplete(MapPackage rootMapPackage,
@@ -165,7 +193,7 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 		};
 		
 		MapLoader mapLoader = MapLoader.getInstance();
-		mapLoader.addListener(mapLoaderListener);
+		mapLoader.addListener(mMapLoaderListener);
 		boolean result = mapLoader.getMapPackages();
 		Log.i(TAG, "result : " + result);
 	}
@@ -254,7 +282,8 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
 	    }
 	    
 	    selectedCountryId = mapPackage.getId();
-	    Log.i(TAG, "selected country : " + mapPackage.getTitle());
+	    selectedCountryTitle = mapPackage.getTitle();
+	    Log.i(TAG, "selected country : " + selectedCountryTitle);
 	    Log.i(TAG, "selectedCountryId : " + selectedCountryId);
     }
 
@@ -264,12 +293,23 @@ public class MapDownloaderActivity extends ActionBarActivity implements OnClickL
     }
 		
 	}
+	
+	private void installMapPackage() {
+		List<Integer> downloadList = new ArrayList<Integer>();
+		downloadList.add(selectedCountryId);
+		
+		MapLoader mapLoader = MapLoader.getInstance();
+		mapLoader.addListener(mMapLoaderListener);
+		mapLoader.installMapPackages(downloadList);
+//		mapLoader.uninstallMapPackages(downloadList);
+	}
 
 	@Override
   public void onClick(View view) {
 	  switch (view.getId()) {
 	  	case R.id.download_button : {
-	  		
+	  		showHorizontalProgress("Downloading", "Downloading Map for " + selectedCountryTitle, false);
+	  		installMapPackage();
 	  	}
 	  	break;
 	  }

@@ -9,5 +9,7 @@
     <string name="continent">Continent</string>
     <string name="country">Country</string>
     <string name="map_download">Download Map</string>
+    
+    <string name="search">Search</string>
 
 </resources>

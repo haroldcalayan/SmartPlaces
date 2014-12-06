@@ -26,11 +26,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>
-        <activity 
+        <activity
             android:name=".activity.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,8 +46,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ToggleViewActivity"
-            android:screenOrientation="portrait">
-            </activity>
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name=".activity.MessagesActivity"
             android:screenOrientation="portrait" />
@@ -73,10 +73,6 @@
         <!--
     Embed the HERE Map Service. 
     For more information, see the HERE SDK Developer's Guide
-
-
-
-
         -->
         <service
             android:name="com.here.android.mpa.service.MapService"

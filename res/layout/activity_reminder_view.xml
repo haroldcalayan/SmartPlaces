@@ -117,7 +117,8 @@
 	            android:layout_weight="20"
 	            android:textSize="16sp"/>
 	        
-	        <EditText 
+	        <com.pipalapipapalapi.smartplaces.widgets.PlaceAutoCompleteTextView 
+              android:id="@+id/location_autocomplete_text_view"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:text="Muzon, Taytay, Rizal"
