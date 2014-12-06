@@ -64,8 +64,9 @@ public class RemindersAdapter extends BaseAdapter {
 	    }
 	    
 	    Reminder reminder = mRemindersList.get(position);
-	    viewHolder.textViewMessage.setText(reminder.getMessage());
-	    viewHolder.textViewLocationAndTime.setText("lat:" + reminder.getLatitude() + " lng:" + reminder.getLongitude());
+	    String message[] = reminder.getMessage().split("DELIMITER");
+	    viewHolder.textViewMessage.setText(message[0]);
+	    viewHolder.textViewLocationAndTime.setText(message[1]);
 
 	    convertView.setOnClickListener(new OnClickListener() {
 			

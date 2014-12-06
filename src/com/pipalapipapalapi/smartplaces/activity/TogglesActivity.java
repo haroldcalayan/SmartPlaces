@@ -84,10 +84,25 @@ public class TogglesActivity extends ActionBarActivity {
 		toggle.setBluetoothState(0);
 		toggle.setMobileDataState(1);
 		toggle.setRingerState(1);
-		toggle.setStatus(1);
-		toggle.setTrigger(1);
 		toggle.setWifiState(1);
+		toggle.setTrigger(1);
 		list.add(toggle);
+		Toggle toggle2 = new Toggle();
+		toggle2.setAirplaneModeState(1);
+		toggle2.setBluetoothState(0);
+		toggle2.setMobileDataState(0);
+		toggle2.setRingerState(0);
+		toggle2.setWifiState(0);
+		toggle2.setTrigger(2);
+		list.add(toggle2);
+		Toggle toggle3 = new Toggle();
+		toggle3.setAirplaneModeState(0);
+		toggle3.setBluetoothState(1);
+		toggle3.setMobileDataState(1);
+		toggle3.setRingerState(1);
+		toggle3.setWifiState(1);
+		toggle3.setTrigger(3);
+		list.add(toggle3);
 		return list;
 	}
 }

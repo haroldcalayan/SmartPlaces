@@ -81,8 +81,17 @@ public class RemindersActivity extends ActionBarActivity {
 	private List<Reminder> getRemindersList() {
 		List<Reminder> list = new ArrayList<Reminder>();
 		Reminder reminder = new Reminder();
-		reminder.setMessage("Sample Message");
+		reminder.setMessage("Buy Milk" + "DELIMITER" + "Nearby grocery");
 		list.add(reminder);
+		Reminder reminder2 = new Reminder();
+		reminder2.setMessage("Pipalapipapalapi Smart Places" + "DELIMITER" + "8:00 PM - 12F Smart Tower 6799 Ayala Avenue");
+		list.add(reminder2);
+		Reminder reminder3 = new Reminder();
+		reminder3.setMessage("Buy Dinner" + "DELIMITER" + "Nearby grocery");
+		list.add(reminder3);
+		Reminder reminder4 = new Reminder();
+		reminder4.setMessage("Sleeping Time" + "DELIMITER" + "10:00 PM - Muzon, Taytay, Rizal");
+		list.add(reminder4);
 		return list;
 	}
 }

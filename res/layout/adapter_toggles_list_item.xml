@@ -2,16 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#FFFFFF" >
     
     <TextView 
         android:id="@+id/adapter_toggles_list_item_text_view_location"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Buy Milk"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        style="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
     
     <TextView 
         android:id="@+id/adapter_toggles_list_item_text_view_connection"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Nearby Grocery"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="10dp"/>
     
 </LinearLayout>

@@ -7,11 +7,21 @@
     <TextView 
         android:id="@+id/adapter_reminders_list_item_text_view_message"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Buy Milk"
+        android:textSize="22sp"
+        android:textColor="#333333"
+        style="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"/>
     
     <TextView 
         android:id="@+id/adapter_reminders_list_item_text_view_location_and_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Nearby Grocery"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>
