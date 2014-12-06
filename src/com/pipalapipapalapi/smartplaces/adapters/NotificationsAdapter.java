@@ -72,13 +72,13 @@ public class NotificationsAdapter extends BaseAdapter {
 	    Notification notification = mNotificationsList.get(position);
 	    final int type = notification.getType();
 	    if(type == 1) {
-	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_reminders);
+	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_reminder_black);
 	    } else if(type == 2) {
-	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_reminders);
+	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_reminder_black);
 	    } else if(type == 3) {
-	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_toggles);
+	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_toggle_black);
 	    } else if(type == 4) {
-	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_messages);
+	    	viewHolder.imageViewNotificationImage.setBackgroundResource(R.drawable.icon_message_black);
 	    }
 	    viewHolder.textViewTitle.setText(notification.getTitle());
 	    viewHolder.textViewMessage.setText(notification.getMessage());
