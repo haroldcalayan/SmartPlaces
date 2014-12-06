@@ -3,22 +3,17 @@ package com.pipalapipapalapi.smartplaces.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
+import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import com.pipalapipapalapi.smartplaces.R;
-import com.pipalapipapalapi.smartplaces.adapters.MessagesAdapter;
 import com.pipalapipapalapi.smartplaces.adapters.NotificationsAdapter;
-import com.pipalapipapalapi.smartplaces.model.Message;
 import com.pipalapipapalapi.smartplaces.model.Notification;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ListView;
 
 public class NotificationsActivity extends ActionBarActivity {
 	
@@ -60,8 +55,8 @@ public class NotificationsActivity extends ActionBarActivity {
 	    actionBar.setDisplayUseLogoEnabled(true);
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    actionBar.setDisplayShowHomeEnabled(true);
-	    actionBar.setIcon(R.drawable.icon_messages);
-	    actionBar.setTitle("Messages");
+	    actionBar.setIcon(R.drawable.icon_notifications);
+	    actionBar.setTitle("Notifications");
 	}
 	
 	private List<Notification> getNotificationsList() {
