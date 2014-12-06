@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SmartPlaces</string>
+    <string name="app_name">Smart Places</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Map Download Activity -->
+    <string name="continent">Continent</string>
+    <string name="country">Country</string>
+    <string name="map_download">Download Map</string>
 
 </resources>
