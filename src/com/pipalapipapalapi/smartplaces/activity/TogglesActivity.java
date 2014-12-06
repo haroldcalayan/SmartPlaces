@@ -1,5 +1,8 @@
 package com.pipalapipapalapi.smartplaces.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,11 +10,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 import com.pipalapipapalapi.smartplaces.R;
+import com.pipalapipapalapi.smartplaces.adapters.TogglesAdapter;
+import com.pipalapipapalapi.smartplaces.model.Toggle;
 
 public class TogglesActivity extends ActionBarActivity {
+	
+	@InjectView(R.id.activity_toggles_list_view) ListView mListViewToggles;
+	
+	private TogglesAdapter mTogglesAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +55,12 @@ public class TogglesActivity extends ActionBarActivity {
 	}
 	
 	private void initValues() {
-		
+		mTogglesAdapter = new TogglesAdapter(getApplicationContext(), getToggleList());
 	}
 
 	private void initViews() {
 		initActionBar();
+		mListViewToggles.setAdapter(mTogglesAdapter);
 	}
 	
 	private void initActionBar() {
@@ -65,4 +77,17 @@ public class TogglesActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 
+	private List<Toggle> getToggleList() {
+		List<Toggle> list = new ArrayList<Toggle>();
+		Toggle toggle = new Toggle();
+		toggle.setAirplaneModeState(0);
+		toggle.setBluetoothState(0);
+		toggle.setMobileDataState(1);
+		toggle.setRingerState(1);
+		toggle.setStatus(1);
+		toggle.setTrigger(1);
+		toggle.setWifiState(1);
+		list.add(toggle);
+		return list;
+	}
 }
