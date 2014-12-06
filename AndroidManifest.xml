@@ -46,7 +46,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ToggleViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            </activity>
         <activity
             android:name=".activity.MessagesActivity"
             android:screenOrientation="portrait" />
@@ -71,7 +72,11 @@
 
         <!--
     Embed the HERE Map Service. 
-    For more information, see the HERE SDK Developer's Guide
+    For more information, see the HERE SDK Developer's Guide
+
+
+
+
         -->
         <service
             android:name="com.here.android.mpa.service.MapService"

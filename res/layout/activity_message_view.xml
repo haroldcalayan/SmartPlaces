@@ -2,6 +2,196 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:weightSum="100" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="45"
+        android:padding="16dp"
+        android:gravity="center" >
+    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:weightSum="100" >
+	        
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="10"
+	            android:src="@drawable/form_icon_contact"
+	            android:paddingRight="6dp"
+	            android:layout_marginBottom="5dp"
+	            android:layout_gravity="center" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="90"
+	            android:textColor="#555555"
+	            android:text="Arleen De Leon"/>
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_gravity="center"
+	        android:weightSum="100" >
+
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="10"
+	            android:src="@drawable/form_icon_message"
+	            android:paddingRight="10dp"
+	            android:layout_marginBottom="5dp"
+	            android:layout_gravity="center" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="90"
+	            android:textColor="#555555"
+	            android:text="I'm home"/>
+	    </LinearLayout>
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="55"
+        android:background="#EEEEEE"
+        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:weightSum="100" >
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:paddingBottom="10dp" >
+
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="22dp"
+	            android:layout_weight="10"
+	            android:src="@drawable/form_icon_date"
+	            android:layout_marginRight="10dp"
+	            android:layout_gravity="center"
+	            android:layout_marginBottom="5dp" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="50"
+	            android:textColor="#555555"
+	            android:textSize="16sp"
+	            android:text="Sun, Dec. 7, 2014"
+	            android:layout_gravity="center"/>
+	        
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="22dp"
+	            android:layout_weight="10"
+	            android:src="@drawable/form_icon_time"
+	            android:layout_marginRight="10dp"
+	            android:layout_marginLeft="10dp"
+	            android:layout_gravity="center"
+	            android:layout_marginBottom="5dp" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="30"
+	            android:textColor="#555555"
+	            android:text="8:00 AM"
+	            android:textSize="16sp"
+	            android:gravity="center"/>
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:weightSum="100"
+	        android:paddingBottom="10dp" >
+	        
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="22dp"
+	            android:src="@drawable/form_icon_location"
+	            android:layout_weight="10"
+	            android:layout_marginRight="10dp"
+	            android:layout_gravity="center"
+	            android:layout_marginBottom="5dp" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:text="at"
+	            android:textColor="#555555"
+	            android:layout_weight="20"
+	            android:textSize="16sp"/>
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:text="Muzon, Taytay, Rizal"
+	            android:textColor="#555555"
+	            android:layout_weight="70"
+	            android:textSize="16sp"/>
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:weightSum="100"
+	        android:paddingBottom="10dp" >
+
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="22dp"
+	            android:layout_weight="10"
+	            android:src="@drawable/form_icon_alarm"
+	            android:layout_marginRight="10dp"
+	            android:layout_gravity="center"
+	            android:layout_marginBottom="5dp" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="40"
+	            android:textColor="#555555"
+	            android:text="No Alarm"
+	            android:textSize="16sp"/>
+	        
+	        <ImageView
+	            android:layout_width="0dp"
+	            android:layout_height="22dp"
+	            android:layout_weight="10"
+	            android:src="@drawable/form_icon_repeat"
+	            android:layout_marginLeft="10dp"
+	            android:layout_marginRight="10dp"
+	            android:layout_gravity="center"
+	            android:layout_marginBottom="5dp" />
+	        
+	        <EditText 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="40"
+	            android:textColor="#555555"
+	            android:text="No repeat"
+	            android:textSize="16sp"/>
+	    </LinearLayout>
+	</LinearLayout>
     
 </LinearLayout>
