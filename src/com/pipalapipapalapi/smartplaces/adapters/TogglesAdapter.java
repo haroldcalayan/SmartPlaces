@@ -63,8 +63,16 @@ public class TogglesAdapter extends BaseAdapter {
 	    }
 
 	    Toggle toggle = mTogglesList.get(position);
-	    viewHolder.textViewLocation.setText("lat: " + toggle.getLatitude() + " lng: " + toggle.getLongitude());
-	    viewHolder.textViewConnection.setText("airplane state: " + toggle.getAirplaneModeState() + " wifi state: " + toggle.getWifiState());
+	    if(toggle.getTrigger() == 1) {
+	    	viewHolder.textViewLocation.setText("Voyager Innovations Inc., Anson's Building");
+	    	viewHolder.textViewConnection.setText("Wi-Fi, Cellular Data, Ringer");
+	    } else if(toggle.getTrigger() == 2) {
+	    	viewHolder.textViewLocation.setText("At Church");
+	    	viewHolder.textViewConnection.setText("Airplane Mode");
+	    } else if(toggle.getTrigger() == 3) {
+	    	viewHolder.textViewLocation.setText("Muzon, Taytay, Rizal");
+	    	viewHolder.textViewConnection.setText("Wi-fi, Bluetooth, Cellular Data, Ringer");
+	    }
 	    
 	    convertView.setOnClickListener(new OnClickListener() {
 			

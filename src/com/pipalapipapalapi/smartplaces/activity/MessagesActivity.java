@@ -81,9 +81,21 @@ public class MessagesActivity extends ActionBarActivity {
 	private List<Message> getMessagesList() {
 		List<Message> list = new ArrayList<Message>();
 		Message message = new Message();
-		message.setMessage("Sample Message");
-		message.setRecipientNumber("09123456789");
+		message.setMessage("Just arrived office");
+		message.setRecipientNumber("Arleen De Leon, Kia Bangsal and 2 others");
 		list.add(message);
+		Message message2 = new Message();
+		message2.setMessage("I'm home.");
+		message2.setRecipientNumber("Francis De Leon, Kia Bangsal and 3 others");
+		list.add(message2);
+		Message message3 = new Message();
+		message3.setMessage("Im in an interview.");
+		message3.setRecipientNumber("Sam Francisco and Harold Calayan");
+		list.add(message3);
+		Message message4 = new Message();
+		message4.setMessage("I'm at school.");
+		message4.setRecipientNumber("Aaron De Leon and Leslie James");
+		list.add(message4);
 		return list;
 	}
 }
