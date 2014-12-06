@@ -1,5 +1,7 @@
 package com.pipalapipapalapi.smartplaces.activity;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +10,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import com.pipalapipapalapi.smartplaces.R;
+import com.pipalapipapalapi.smartplaces.database.DAOListener;
+import com.pipalapipapalapi.smartplaces.database.LogDAO;
+import com.pipalapipapalapi.smartplaces.database.LogTable;
+import com.pipalapipapalapi.smartplaces.model.Log;
 import com.pipalapipapalapi.smartplaces.utils.ImageUtils;
 import com.pipalapipapalapi.smartplaces.utils.Utils;
 
@@ -43,6 +50,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     setContentView(R.layout.activity_main);
     ButterKnife.inject(this);
     initViews();
+    //testDB();
   }
 
   @Override public void onClick(View v) {
@@ -97,5 +105,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
   private void onTogglesClick() {
 	  Intent togglesIntent = new Intent(this, TogglesActivity.class);
 	  startActivity(togglesIntent);
+  }
+  
+  private void testDB() {
+	  Log log = new Log();
+	  log.setId(1);
+	  log.setModule("Sample Module");
+	  log.setLocation("Sample Location");
+	  log.setDateTimeInMillis(12345);
+	  LogDAO.getInstance(getApplicationContext()).insert(log);
+	  LogDAO.getInstance(this).queryAll(LogTable.COLUMN_ID, new DAOListener<List<Log>>() {
+		
+		@Override
+		public void onFinish(List<Log> t) {
+			Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
+		}
+	});
   }
 }
