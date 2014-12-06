@@ -17,7 +17,7 @@
     <application
         android:name=".SmartPlacesApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon_main"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat" >
         <activity
@@ -25,6 +25,17 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activity.SplashScreenActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.MapDownloaderActivity"
@@ -36,11 +47,6 @@
         <activity
             android:name=".activity.ToggleViewActivity"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.MessagesActivity"
@@ -60,10 +66,13 @@
         <activity
             android:name=".activity.NotificationsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HereMapActivity"
+            android:screenOrientation="portrait" />
 
         <!--
     Embed the HERE Map Service. 
-    For more information, see the HERE SDK Developer's Guide
+    For more information, see the HERE SDK Developer's Guide
         -->
         <service
             android:name="com.here.android.mpa.service.MapService"

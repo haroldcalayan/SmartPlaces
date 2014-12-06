@@ -72,7 +72,6 @@ public class ToggleViewActivity extends ActionBarActivity {
 				if (error == Error.NONE) {
 					placesList = new ArrayList<Place>();
 					mLocationACTV.addTextChangedListener(mTextWatcher);
-//					mLocationACTV.setOnItemClickListener(new PlaceAdapterItemClickedListener());
 					mLocationACTV.setOnItemClickListener(new PlaceAdapterItemClickedListener());
 				}
 			}

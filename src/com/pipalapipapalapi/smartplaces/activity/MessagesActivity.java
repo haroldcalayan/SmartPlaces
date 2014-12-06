@@ -1,8 +1,15 @@
 package com.pipalapipapalapi.smartplaces.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 import com.pipalapipapalapi.smartplaces.R;
+import com.pipalapipapalapi.smartplaces.adapters.MessagesAdapter;
+import com.pipalapipapalapi.smartplaces.model.Message;
+import com.pipalapipapalapi.smartplaces.model.Reminder;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +17,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 public class MessagesActivity extends ActionBarActivity {
+	
+	@InjectView(R.id.activity_messages_list_view) ListView mListViewMessages;
+	
+	private MessagesAdapter mMessagesAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +56,12 @@ public class MessagesActivity extends ActionBarActivity {
 	}
 	
 	private void initValues() {
-		
+		mMessagesAdapter = new MessagesAdapter(getApplicationContext(), getMessagesList());
 	}
 
 	private void initViews() {
 		initActionBar();
+		mListViewMessages.setAdapter(mMessagesAdapter);
 	}
 	
 	private void initActionBar() {
@@ -63,5 +76,14 @@ public class MessagesActivity extends ActionBarActivity {
 	private void openMessageViewActivity() {
 		Intent intent = new Intent(this, MessageViewActivity.class);
 		startActivity(intent);
+	}
+	
+	private List<Message> getMessagesList() {
+		List<Message> list = new ArrayList<Message>();
+		Message message = new Message();
+		message.setMessage("Sample Message");
+		message.setRecipientNumber("09123456789");
+		list.add(message);
+		return list;
 	}
 }
