@@ -28,9 +28,10 @@
 	        	android:orientation="vertical"
 	        	android:layout_weight="20">
 	        	<ImageView
+	        	    android:id="@+id/wifi_imageview"
 	        	    android:layout_width="50dp"
 	        	    android:layout_height="50dp"
-	        	    android:src="@drawable/toggle_wifi_on"
+	        	    android:src="@drawable/toggle_wifi_off"
 	        	    android:layout_gravity="center"/>
 	        	<TextView 
 	        	    android:layout_width="wrap_content"
@@ -47,9 +48,10 @@
 	        	android:orientation="vertical"
 	        	android:layout_weight="20">
 	            <ImageView
+	                android:id="@+id/data_imageview"
 	        	    android:layout_width="50dp"
 	        	    android:layout_height="50dp"
-	        	    android:src="@drawable/toggle_data_on"
+	        	    android:src="@drawable/toggle_data_off"
 	        	    android:layout_gravity="center"/>
 	        	<TextView 
 	        	    android:layout_width="wrap_content"
@@ -66,9 +68,10 @@
 	        	android:orientation="vertical"
 	        	android:layout_weight="20">
 	            <ImageView
+	                android:id="@+id/bluetooth_imageview"
 	        	    android:layout_width="50dp"
 	        	    android:layout_height="50dp"
-	        	    android:src="@drawable/toggle_bluetooth_on"
+	        	    android:src="@drawable/toggle_bluetooth_off"
 	        	    android:layout_gravity="center"/>
 	        	<TextView 
 	        	    android:layout_width="wrap_content"
@@ -85,9 +88,10 @@
 	        	android:orientation="vertical"
 	        	android:layout_weight="20">
 	            <ImageView
+	                android:id="@+id/airplane_imageview"
 	        	    android:layout_width="50dp"
 	        	    android:layout_height="50dp"
-	        	    android:src="@drawable/toggle_airplane_on"
+	        	    android:src="@drawable/toggle_airplane_off"
 	        	    android:layout_gravity="center"/>
 	        	<TextView 
 	        	    android:layout_width="wrap_content"
@@ -104,9 +108,10 @@
 	        	android:orientation="vertical"
 	        	android:layout_weight="20">
 	            <ImageView
+	                android:id="@+id/ringer_imageview"
 	        	    android:layout_width="50dp"
 	        	    android:layout_height="50dp"
-	        	    android:src="@drawable/toggle_ringer_on"
+	        	    android:src="@drawable/toggle_ringer_off"
 	        	    android:layout_gravity="center"/>
 	        	<TextView 
 	        	    android:layout_width="wrap_content"

@@ -1,7 +1,9 @@
 package com.pipalapipapalapi.smartplaces.activity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +15,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -35,9 +39,14 @@ import com.pipalapipapalapi.smartplaces.adapters.PlacesAdapter;
 import com.pipalapipapalapi.smartplaces.model.Place;
 import com.pipalapipapalapi.smartplaces.widgets.PlaceAutoCompleteTextView;
 
-public class ToggleViewActivity extends ActionBarActivity {
+public class ToggleViewActivity extends ActionBarActivity implements OnClickListener {
 	
 	@InjectView(R.id.location_autocomplete_text_view) PlaceAutoCompleteTextView mLocationACTV;
+	@InjectView(R.id.wifi_imageview) ImageView mWifiImageView;
+	@InjectView(R.id.data_imageview) ImageView mDataImageView;
+	@InjectView(R.id.bluetooth_imageview) ImageView mBluetoothImageView;
+	@InjectView(R.id.airplane_imageview) ImageView mAirplaneImageView;
+	@InjectView(R.id.ringer_imageview) ImageView mRingerImageView;
 	
 	private static final String TAG = ToggleViewActivity.class.getSimpleName();
 	
@@ -49,6 +58,8 @@ public class ToggleViewActivity extends ActionBarActivity {
 	private PlacesAdapter mPlacesAdapter;
 	
 	private Place selectedPlace;
+	
+	private Map<String, Integer> togglesStateMap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +110,22 @@ public class ToggleViewActivity extends ActionBarActivity {
 	}
 	
 	private void initValues() {
-		
+		togglesStateMap = new HashMap<String, Integer>();
+		togglesStateMap.put("wifi", 0);
+		togglesStateMap.put("data", 0);
+		togglesStateMap.put("bluetooth", 0);
+		togglesStateMap.put("airplane", 0);
+		togglesStateMap.put("ringer", 0);
 	}
 
 	private void initViews() {
 		initActionBar();
+		
+		mWifiImageView.setOnClickListener(this);
+		mDataImageView.setOnClickListener(this);
+		mBluetoothImageView.setOnClickListener(this);
+		mAirplaneImageView.setOnClickListener(this);
+		mRingerImageView.setOnClickListener(this);
 	}
 	
 	private void initActionBar() {
@@ -223,5 +245,95 @@ public class ToggleViewActivity extends ActionBarActivity {
     }
 
 	}
+
+	@Override
+  public void onClick(View view) {
+		switch (view.getId()) {
+			case R.id.wifi_imageview : {
+				int state = togglesStateMap.get("wifi");
+				state = ((state + 1) % 2);
+				
+				Log.i(TAG, "state : " + state);
+				
+				if (state == 0) {
+					mWifiImageView.setImageResource(R.drawable.toggle_wifi_off);
+				}
+				else {
+					mWifiImageView.setImageResource(R.drawable.toggle_wifi_on);
+				}
+				
+				togglesStateMap.put("wifi", state);
+			}
+			break;
+			
+			case R.id.data_imageview : {
+				int state = togglesStateMap.get("data");
+				state = ((state + 1) % 2);
+				
+				Log.i(TAG, "state : " + state);
+				
+				if (state == 0) {
+					mDataImageView.setImageResource(R.drawable.toggle_data_off);
+				}
+				else {
+					mDataImageView.setImageResource(R.drawable.toggle_data_on);
+				}
+				
+				togglesStateMap.put("data", state);
+			}
+			break;
+			
+			case R.id.bluetooth_imageview : {
+				int state = togglesStateMap.get("bluetooth");
+				state = ((state + 1) % 2);
+				
+				Log.i(TAG, "state : " + state);
+				
+				if (state == 0) {
+					mBluetoothImageView.setImageResource(R.drawable.toggle_bluetooth_off);
+				}
+				else {
+					mBluetoothImageView.setImageResource(R.drawable.toggle_bluetooth_on);
+				}
+				
+				togglesStateMap.put("bluetooth", state);
+			}
+			break;
+			
+			case R.id.airplane_imageview : {
+				int state = togglesStateMap.get("airplane");
+				state = ((state + 1) % 2);
+				
+				Log.i(TAG, "state : " + state);
+				
+				if (state == 0) {
+					mAirplaneImageView.setImageResource(R.drawable.toggle_airplane_off);
+				}
+				else {
+					mAirplaneImageView.setImageResource(R.drawable.toggle_airplane_on);
+				}
+				
+				togglesStateMap.put("airplane", state);
+			}
+			break;
+			
+			case R.id.ringer_imageview : {
+				int state = togglesStateMap.get("ringer");
+				state = ((state + 1) % 2);
+				
+				Log.i(TAG, "state : " + state);
+				
+				if (state == 0) {
+					mRingerImageView.setImageResource(R.drawable.toggle_ringer_off);
+				}
+				else {
+					mRingerImageView.setImageResource(R.drawable.toggle_ringer_on);
+				}
+				
+				togglesStateMap.put("ringer", state);
+			}
+			break;
+		}
+  }
 	
 }
